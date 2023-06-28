@@ -23,15 +23,15 @@
       margin-top: 10px;
       font-size: 18px;
     }
-
-    .data {
+    .container {
       display: flex;
       justify-content: center;
       margin-top: 20px;
+    }
+    .data {
+      margin-top: 20px;
       padding: 10px;
       margin: 0 auto;
-      max-width: 600px;
-      height: 400px;
     }
   </style>
 </head>
@@ -40,8 +40,10 @@
     <div class="title">WRG Running Projects</div>
     <div class="description">This is a small description of the running projects.</div>
   </div>
-  <div class="data" id="chart_div"></div>
-  <div class="data" id="techstack_div"></div>
+  <div class="container">
+    <div class="data" id="chart_div"></div>
+    <div class="data" id="techstack_div"></div>
+  </div>
     <!-- Include the JavaScript code to load and display the chart -->
   <script src="script.js"></script>
 </body>
