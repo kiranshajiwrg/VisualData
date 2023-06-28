@@ -1,5 +1,5 @@
 // Load the Google Charts library
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawChart);
 
 // Retrieve data from the Google Sheet and create the pie chart
@@ -41,46 +41,46 @@ function drawChart() {
         title: 'Project Category Percentage',
         is3D: true,
         width: 600,
-        height:400
+        height: 400
       };
 
       // Create and draw the chart
       const projecttypechart = new google.visualization.PieChart(document.getElementById('chart_div'));
       projecttypechart.draw(dataProjectTypeTable, projectcategoryoptions);
-      
-    // Filter the data based on the given conditions (TechSTack & InProgress)
-    const filteredTechStacktypeData = rows.filter(row => row[statusIndex] === 'In progress');
 
-    // Group the data by project name and count the occurrences
-    const techStackCounts = {};
-    filteredTechStacktypeData.forEach(row => {
-    const techstackname = row[techStackIndex];
-    techStackCounts[techstackname] = (techStackCounts[techstackname] || 0) + 1;
+      // Filter the data based on the given conditions (TechStack & InProgress)
+      const filteredTechStacktypeData = rows.filter(row => row[statusIndex] === 'In progress');
+
+      // Group the data by project name and count the occurrences
+      const techStackCounts = {};
+      filteredTechStacktypeData.forEach(row => {
+        const techstackname = row[techStackIndex];
+        techStackCounts[techstackname] = (techStackCounts[techstackname] || 0) + 1;
+      });
+
+      // Prepare the data for the chart
+      const chartData = Object.entries(techStackCounts).map(([project, count]) => [project, count]);
+
+      // Create the data table
+      const dataTechStackTable = new google.visualization.DataTable();
+      dataTechStackTable.addColumn('string', 'Project Name');
+      dataTechStackTable.addColumn('number', 'Count');
+      dataTechStackTable.addRows(chartData);
+
+      // Set chart options
+      const options = {
+        title: 'TechStack Percentage',
+        is3D: true,
+        width: 600,
+        height: 400
+      };
+
+      // Create and draw the chart
+      const chart = new google.visualization.PieChart(document.getElementById('techstack_div'));
+      chart.draw(dataTechStackTable, options);
+
+    })
+    .catch(error => {
+      console.error('Error retrieving data:', error);
     });
-
-    // Prepare the data for the chart
-    const chartData = Object.entries(techStackCounts).map(([project, count]) => [project, count]);
-
-    // Create the data table
-    const dataTechStackTable = new google.visualization.DataTable();
-    dataTechStackTable.addColumn('string', 'Project Name');
-    dataTechStackTable.addColumn('number', 'Count');
-    dataTechStackTable.addRows(chartData);
-
-    // Set chart options
-    const options = {
-    title: 'TechStack Percentage',
-    is3D: true,
-    width: 600,
-    height:400
-    };
-
-    // Create and draw the chart
-    const chart = new google.visualization.PieChart(document.getElementById('techstack_div'));
-    chart.draw(dataTechStackTable, options);
-        
-        })
-        .catch(error => {
-        console.error('Error retrieving data:', error);
-        });
 }
