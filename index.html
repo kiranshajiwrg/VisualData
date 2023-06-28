@@ -5,18 +5,42 @@
   <!-- Include the Google Charts library -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
+    /* CSS styling for the header section */
+    .header {
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .description {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .data {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      padding: 10px;
+      margin: 0 50px;
+      width: 600px;
+      height: 400px;
+    }
   </style>
 </head>
 <body>
-  <h1> WRG Running Projects </h1>
-  <p> Data shown based on the current Active and Running projects</p>
-  <!-- Display the pie chart here -->
-  <div float:left id="chart_div"></div>
-  <div float:right id="techstack_div"></div>
-  <div></div>
-
-
-  <!-- Include the JavaScript code to load and display the chart -->
-  <script src="script.js"></script>
+  <div class="header">
+    <div class="title">WRG Running Projects</div>
+    <div class="description">This is a small description of the running projects.</div>
+  </div>
+    <div class="data" id="chart_div"></div>
+    <div class="data" id="techstack_div"></div>
+  </div>
 </body>
 </html>
+
