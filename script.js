@@ -79,6 +79,8 @@ function drawChart() {
       const chart = new google.visualization.PieChart(document.getElementById('techstack_div'));
       chart.draw(dataTechStackTable, options);
 
+      
+
     })
     .catch(error => {
       console.error('Error retrieving data:', error);
